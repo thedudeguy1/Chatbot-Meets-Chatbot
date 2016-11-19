@@ -41,8 +41,6 @@ public class ChatbotMeetsChatbot {
     private String botOneType;
     private String botTwoType;
     private ChatterBotFactory factory = new ChatterBotFactory();
-    private ChatterBot bot1;
-    private ChatterBot bot2;
     private ChatterBotSession bot1session;
     private ChatterBotSession bot2session;
 
@@ -124,19 +122,19 @@ public class ChatbotMeetsChatbot {
             loops = Integer.parseInt(numLoops.getText());
             botOneType = botType1.getSelectedItem().toString().toUpperCase();
             botTwoType = botType2.getSelectedItem().toString().toUpperCase();
+            ChatterBot bot1 = null;
             try {
                 bot1 = factory.create(ChatterBotType.valueOf(botOneType), pandorabotBotID);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            assert bot1 != null;
             bot1session = bot1.createSession();
+            ChatterBot bot2 = null;
             try {
                 bot2 = factory.create(ChatterBotType.valueOf(botTwoType), pandorabotBotID);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            assert bot2 != null;
             bot2session = bot2.createSession();
 
             talk();
