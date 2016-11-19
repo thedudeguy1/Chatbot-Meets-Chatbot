@@ -1,6 +1,4 @@
 package com.google.code.chatterbotapi;
-
-import com.google.code.chatterbotapi.*;
 import java.util.Scanner;
 
 /*
@@ -20,17 +18,16 @@ import java.util.Scanner;
     You should have received a copy of the GNU Lesser General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-public class ChatBotMeetsChatbot
+
+public class ChatbotMeetsChatbot
 {
     public static void main(String[] args) throws Exception
-	{
-        String s = "Hi";
+    {
+        String s;
         String pandorabotBotID = "b0dafd24ee35a477";
-        int botChoiceOne = 1;
-        int botChoiceTwo = 1;
-        int conversationLoopNum = 0;
-		int leftoverLoops = 0;
-		boolean shouldStillRun = true;
+        int botChoiceOne;
+        int botChoiceTwo;
+        int conversationLoopNum;
         String botOneType = "CLEVERBOT";
         String botTwoType = "CLEVERBOT";
         Scanner input = new Scanner(System.in);
@@ -47,10 +44,10 @@ public class ChatBotMeetsChatbot
         System.out.print("Select the second chatbot type (enter a number)\n1: Cleverbot\n2: Jabberwacky\n3: Pandorabots\n>");
         botChoiceTwo = input.nextInt();
         
-        System.out.print("How many times will you like to cycle through the exchange of words between the bots?\nCan be any integer (<1 is infinite and will require CTR + C)\n>");
+        System.out.print("How many times will you like to cycle through the exchange of words between the bots?\nCan be any integer (<0 is infinite and will require CTR + C)\n>");
         conversationLoopNum = input.nextInt();
         
-        switch(botChoiceOne)
+        switch(botChoiceOne)    //The first bot choice will be converted into a string later to be converted to enum value
         {
             case 1: botOneType = "CLEVERBOT";
             break;
@@ -60,7 +57,7 @@ public class ChatBotMeetsChatbot
             break;
         }
 
-        switch(botChoiceTwo)
+        switch(botChoiceTwo)    //The second bot choice will be converted into a string later to be converted to enum value
         {
             case 1: botTwoType = "CLEVERBOT";
             break;
@@ -71,37 +68,25 @@ public class ChatBotMeetsChatbot
         }
         
         
-        ChatterBot bot1 = factory.create(ChatterBotType.valueOf(botOneType), pandorabotBotID);
+        ChatterBot bot1 = factory.create(ChatterBotType.valueOf(botOneType), pandorabotBotID);  //botOneType will be converted to proper enum value (found in ChatterBotType.java)
         ChatterBotSession bot1session = bot1.createSession();
 
-        ChatterBot bot2 = factory.create(ChatterBotType.valueOf(botTwoType), pandorabotBotID);
+        ChatterBot bot2 = factory.create(ChatterBotType.valueOf(botTwoType), pandorabotBotID);  //botTwoType will be converted to proper enum value (found in ChatterBotType.java)
         ChatterBotSession bot2session = bot2.createSession();
         
-		if (conversationLoopNum < 1)
-		{
-			shouldStillRun = true;
-		}
-		else
-		{
-			leftoverLoops = conversationLoopNum;
-			shouldStillRun = true;
-		}
-		
-        
-        while (shouldStillRun)
-		{
-			if (leftoverLoops == 1)
-			{
-				shouldStillRun = false;
-			}
-			
+        /*
+         * This would be so much simpler if I had no option for infinite running.
+         * The for loop below handles the conversation between the two bots.
+         */
+
+        for (int leftoverLoops = conversationLoopNum; leftoverLoops != 0; leftoverLoops--)
+        {
             System.out.println("bot1> " + s);
 
             s = bot2session.think(s);
             System.out.println("bot2> " + s);
 
             s = bot1session.think(s);
-			leftoverLoops--;
         }
     }
 }
