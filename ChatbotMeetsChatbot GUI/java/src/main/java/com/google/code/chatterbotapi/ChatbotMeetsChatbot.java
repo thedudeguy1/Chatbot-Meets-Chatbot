@@ -128,6 +128,7 @@ public class ChatbotMeetsChatbot {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
+            assert bot1 != null;
             bot1session = bot1.createSession();
             ChatterBot bot2 = null;
             try {
@@ -135,6 +136,7 @@ public class ChatbotMeetsChatbot {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
+            assert bot2 != null;
             bot2session = bot2.createSession();
 
             talk();
