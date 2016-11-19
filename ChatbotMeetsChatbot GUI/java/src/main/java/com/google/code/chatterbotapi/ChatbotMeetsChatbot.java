@@ -123,7 +123,7 @@ public class ChatbotMeetsChatbot {
             s = firstPhrase.getText();
             loops = Integer.parseInt(numLoops.getText());
             botOneType = botType1.getSelectedItem().toString().toUpperCase();
-            botTwoType = botType2.getSelectedItem().toString().toUpperCase();O
+            botTwoType = botType2.getSelectedItem().toString().toUpperCase();
             try {
                 bot1 = factory.create(ChatterBotType.valueOf(botOneType), pandorabotBotID);
             } catch (Exception e1) {
