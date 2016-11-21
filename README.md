@@ -10,3 +10,4 @@ java -jar ChatbotMeetsChatbot.jar
 ## Notice
 
 Most of this code was forked and was made by [pierredavidbelanger](https://github.com/pierredavidbelanger).
+For info on the GUI version (made by [pokedart9001](https://github.com/pokedart9001) in IntelliJ), see the folder labeled "ChatbotMeetsChatbot GUI"
