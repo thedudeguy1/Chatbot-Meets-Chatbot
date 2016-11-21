@@ -16,7 +16,7 @@ And option fields for:
 Also, I would like to note that Jabberwackey and Pandorabot appear to not be working correctly. I think this is just an error carried over form the command-line version, as the code for parsing and outputting the bot text is pretty much copied from there.
 
 ## Usage
-This can be run by either clicking on the .jar file or by opening terminal or command prompt, navigating to the folder containing ChatbotMeetsChatbot.jar, and running it by typing
+This can be run by either clicking on the .jar file or by opening terminal or command prompt, navigating to the folder containing ChatbotMeetsChatbotGUI.jar, and running it by typing
 ```
 java -jar ChatbotMeetsChatbotGUI.jar
 ```
