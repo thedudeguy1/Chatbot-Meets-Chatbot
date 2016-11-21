@@ -18,7 +18,7 @@ Also, I would like to note that Jabberwackey and Pandorabot appear to not be wor
 ## Usage
 This can be run by either clicking on the .jar file or by opening terminal or command prompt, navigating to the folder containing ChatbotMeetsChatbot.jar, and running it by typing
 ```
-java -jar ChatbotMeetsChatbot.jar
+java -jar ChatbotMeetsChatbotGUI.jar
 ```
 ## Notice
 
