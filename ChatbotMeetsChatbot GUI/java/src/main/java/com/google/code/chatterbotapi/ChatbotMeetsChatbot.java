@@ -28,7 +28,6 @@ public class ChatbotMeetsChatbot {
     private JTextField numLoops;
     private JTextField numberOfLoopsTooltip;
     private JTextArea conversationOutput;
-    private PrintStream standardOut = System.out;
     private PrintStream printStream;
     private JScrollPane scrollPane;
     private JButton clearButton;
@@ -41,6 +40,8 @@ public class ChatbotMeetsChatbot {
     private String botOneType;
     private String botTwoType;
     private ChatterBotFactory factory = new ChatterBotFactory();
+    private ChatterBot bot1;
+    private ChatterBot bot2;
     private ChatterBotSession bot1session;
     private ChatterBotSession bot2session;
 
@@ -51,7 +52,7 @@ public class ChatbotMeetsChatbot {
             {
                 if (i < -1) i = -1;
 
-                printStream.print("bot1> " + s + "\n");
+                printStream.println("bot1> " + s);
 
                 if (terminator) {
                     printStream.close();
@@ -80,7 +81,7 @@ public class ChatbotMeetsChatbot {
                     return;
                 }
 
-                printStream.print("bot2> " + s + "\n");
+                printStream.println("bot2> " + s);
 
                 if (terminator) {
                     printStream.close();
@@ -110,7 +111,7 @@ public class ChatbotMeetsChatbot {
                 }
             }
 
-            printStream.print("\n----- CONVERSATION END -----\n\n");
+            printStream.println("\n----- CONVERSATION END -----\n");
         });
         thread.start();
     }
@@ -122,14 +123,12 @@ public class ChatbotMeetsChatbot {
             loops = Integer.parseInt(numLoops.getText());
             botOneType = botType1.getSelectedItem().toString().toUpperCase();
             botTwoType = botType2.getSelectedItem().toString().toUpperCase();
-            ChatterBot bot1 = null;
             try {
                 bot1 = factory.create(ChatterBotType.valueOf(botOneType), pandorabotBotID);
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
             bot1session = bot1.createSession();
-            ChatterBot bot2 = null;
             try {
                 bot2 = factory.create(ChatterBotType.valueOf(botTwoType), pandorabotBotID);
             } catch (Exception e1) {
